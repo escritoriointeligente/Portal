@@ -23,20 +23,18 @@ namespace EI.Portal.Companies
             _companyRepository = companyRepository;
         }
 
-        public async Task<Guid> Create(CreateUpdateCompanyDto company)
+        public async Task<Guid> CreateUpdateAsync(CreateUpdateCompanyDto company)
         {
             if (company.Cnpj.Length < 14)
                 throw new CnpjException("Cnpj deve ser informado no formato 00.000.000/0001-00 ou 00.000000000100.");
 
             if (company.Type == Type.Accounting || company.Type == Type.Final)
                 if (company.ParentId == Guid.Empty || company.ParentId == null)
-                    throw new UserFriendlyException("É necessario selecionar um empresa PAI para cadastrar a empresa atual.");
-
-            company.Normalize();
+                    throw new UserFriendlyException("É necessario selecionar uma CONTABILIDADE para cadastrar a empresa atual.");
 
             var entity = ObjectMapper.Map<Company>(company);
 
-            await _companyRepository.InsertAsync(entity);
+            await _companyRepository.InsertOrUpdateAndGetIdAsync(entity);
 
             return entity.Id;
         }
@@ -46,6 +44,7 @@ namespace EI.Portal.Companies
             var query = _companyRepository
                 .GetAll()
                 .Include(a => a.Parent)
+                .Include(a => a.Address)
                 .WhereIf(filter.ParentId.HasValue, c => c.ParentId == filter.ParentId)
                 .WhereIf(filter.Types.HasValue, t => t.Type == filter.Types.Value)
                 .OrderByDescending(c => c.CreationTime);

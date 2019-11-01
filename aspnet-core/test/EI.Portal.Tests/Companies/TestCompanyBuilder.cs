@@ -1,4 +1,5 @@
-﻿using EI.Portal.Companies;
+﻿using EI.Portal.Addresses;
+using EI.Portal.Companies;
 using EI.Portal.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,13 @@ namespace EI.Portal.Tests.Companies
 
         public Guid AddEscritorioInteligente()
         {
-            var ei = new Company("09.385.712/0001-40", "Escritório Inteligente", Portal.Companies.Type.EI);
+            var address = new Address("AV HENRIQUE ANDRES", "68", "13201048", "JUNDIAI", "SÃO PAULO");
+            address.Uf = "SP";
+            address.Country = "BRASIL";
+            _context.Address.Add(address);
+
+            var ei = new Company("09385712000140", "E I ADVANCED DESENVOLVIMENTOS, COMERCIO E SERVICOS EM INFORMATICA LTDA - ME", Portal.Companies.Type.EI, address.Id);
+            ei.FantasyName = "ESCRITÓRIO INTELIGENTE";
             return AddCompany(ei);
         }
 

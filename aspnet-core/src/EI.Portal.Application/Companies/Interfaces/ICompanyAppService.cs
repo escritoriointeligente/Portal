@@ -12,6 +12,6 @@ namespace EI.Portal.Companies.Interfaces
     {
         Task<ListResultDto<CompanyListDto>> GetAll(GetAllFilterCompany type);
         Task<CompanyDto> GetById(Guid id);
-        Task<Guid> Create(CreateUpdateCompanyDto company);
+        Task<Guid> CreateUpdateAsync(CreateUpdateCompanyDto company);
     }
 }

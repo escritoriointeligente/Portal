@@ -21,6 +21,8 @@ namespace EI.Portal.Companies.Dto
         public string AddressCep { get; set; }
         public string AddressCity { get; set; }
         public string AddressDistrict { get; set; }
+        public string AddressUf { get; set; }
+        public string AddressCountry { get; set; }
         public Guid? ParentId { get; set; }
         public string ParentName { get; set; }
     }
