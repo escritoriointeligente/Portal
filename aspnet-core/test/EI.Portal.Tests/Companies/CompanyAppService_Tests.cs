@@ -40,7 +40,7 @@ namespace EI.Portal.Tests.Companies
         }
 
         [Fact]
-        public async Task Should_Get_FInal_Companies()
+        public async Task Should_Get_Final_Companies()
         {
             var result = await _companyAppService.GetAll(new Portal.Companies.Dto.GetAllFilterCompany() { Types = Portal.Companies.Type.Final });
 

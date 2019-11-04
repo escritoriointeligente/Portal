@@ -47,6 +47,12 @@ namespace EI.Portal.Companies.Dto
 
             if (!String.IsNullOrEmpty(Name))
                 Name = Name.ToUpper();
+
+            if (!String.IsNullOrEmpty(FantasyName))
+                Name = FantasyName.ToUpper();
+
+            if (String.IsNullOrEmpty(FantasyName))
+                FantasyName = Name;
         }
     }
 }
