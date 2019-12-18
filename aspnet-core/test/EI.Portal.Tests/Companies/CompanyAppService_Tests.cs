@@ -117,7 +117,7 @@ namespace EI.Portal.Tests.Companies
             var companiesResult = await _companyAppService.GetAll(new Portal.Companies.Dto.GetAllFilterCompany() { Types = Portal.Companies.Type.EI });
             var ei = companiesResult.Items.FirstOrDefault();
 
-            var accounting = new CreateUpdateCompanyDto("00.000.000/0001-00", "COMPANY TEST", Portal.Companies.Type.Accounting, null, ei.Id);
+            var accounting = new CreateUpdateCompanyDto("00.000.000/0001-00", "COMPANY ACCOUNTING TEST", Portal.Companies.Type.Accounting, null, ei.Id);
 
             var guid = await _companyAppService.CreateUpdateAsync(accounting);
 
