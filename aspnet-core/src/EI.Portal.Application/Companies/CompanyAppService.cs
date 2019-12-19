@@ -9,11 +9,13 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EI.Portal.Companies
 {
+    /// <summary>
+    /// Company Service CRUD
+    /// </summary>
     public class CompanyAppService : PortalAppServiceBase, ICompanyAppService
     {
         private readonly IRepository<Company, Guid> _companyRepository;
@@ -39,6 +41,7 @@ namespace EI.Portal.Companies
             return entity.Id;
         }
 
+        
         public async Task<ListResultDto<CompanyListDto>> GetAll(GetAllFilterCompany filter)
         {
             var query = _companyRepository

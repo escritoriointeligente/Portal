@@ -1,13 +1,8 @@
-﻿using Abp.Authorization.Users;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities.Auditing;
 using EI.Portal.Addresses;
-using EI.Portal.Authorization.Users;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 
 namespace EI.Portal.Companies
 {
